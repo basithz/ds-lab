@@ -36,7 +36,7 @@ struct node* pop(struct node *head)
 	}
 	temp=head;
 	prev=0;
-		while(temp!=0) //treversi
+		while(temp->next!=0) //treversi
 	{
 		prev=temp;
 		temp=temp->next;
@@ -46,6 +46,32 @@ struct node* pop(struct node *head)
 			return head;
 			
 
+}
+struct node*  search(struct node *head)
+{
+	int c=0,i=0,item;
+	printf("enter the item to be search");
+	scanf("%d",&item);
+		temp=head;
+	while(temp->next!=NULL)
+	{
+		i++;
+		
+		if(temp->data==item)
+		{
+			printf("item found at position=",i);
+			c++;
+			break;
+		}
+		temp=temp->next;
+	}
+	if(c==0)
+	{
+		printf("item  note found");
+		return head;
+	}
+	
+	
 }
 void dis(struct node *head)
 {
@@ -62,7 +88,7 @@ void main()
 	int ch,data,top=-1;
 	while(1)
 	{
-		printf("1,insert\n2.pop\n3.dis\n4.exit\n");
+		printf("1,insert\n2.pop\n3.dis\n4.search\n5.exit\n");
 		scanf("%d",&ch);
 		switch(ch)
 		{
@@ -74,7 +100,9 @@ void main()
 					break;
 			case 3:dis(head);
 			       break;
-			case 4:exit(0);
+			case 4:search(head);
+			break;
+			case 5:exit(0);
 			default:printf("wrong");
 				   				
 					
